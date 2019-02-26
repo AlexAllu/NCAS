@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends 'base_generic.html' %}
+{% block content %}
+{% load static %}
+<div class="collapse navbar-collapse" id="navbarResponsive">
+<table class="table">
+    <tr>
+        <td><h1>{{ assd.sub }}</h1></td>
+</tr>
+<tr>
+    <td>{{ assd.topic }}</td>
+</tr>
+    <tr>
+    <td>{{ assd.descrip }}</td>
+
+        <td>{{ assd.last_date }}</td>
+        <td><a href="{{ assd.file.url }}">attachments</a></td>
+    </tr>
+    <tr>
+        <td>{{ assd.tutor }}</td>
+</tr>
+</table>
+</div>
+{% endblock %}

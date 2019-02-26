@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends 'base_generic.html' %}
+{% block content %}
+{% load static %}
+<div class="collapse navbar-collapse" id="navbarResponsive">
+<table class="table">
+<tr>
+    <td>{{ notifsd.topic }}</td>
+</tr>
+    <tr>
+    <td>{{ notifsd.descrip }}</td>
+
+        <td>{{ notifsd.date_of_published }}</td>
+        <td><a href="{{ notifsd.fileupload.url }}">attachments</a></td>
+    </tr>
+</table>
+</div>
+{% endblock %}

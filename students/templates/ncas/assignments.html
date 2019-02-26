@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+{% extends 'base_generic.html' %}
+{% block content %}
+<ul>
+    {% for as in ass %}
+    <li>
+        <a href="{% url 'ncas:assd' as.pk %}">{{ as.sub }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

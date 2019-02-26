@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends 'base_generic.html' %}
+{% block content %}
+{% load static %}
+<div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul>
+    {% for not in notifs %}
+    <li>
+        <a href="{% url 'ncas:notifsd' not.pk %}">{{ not.topic }}</a>
+    </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}
