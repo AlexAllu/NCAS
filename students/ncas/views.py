@@ -15,10 +15,10 @@ from .forms import StudentCreation, UserCreationForm, MarkCreation, AssignmentsC
 from django.contrib.auth.decorators import permission_required
 
 
-class StudentDetail(generic.DetailView):
-    model = Student
-    template_name = 'ncas/studentdetails.html'
-    context_object_name = 'student'
+def studentdetail(request, pk):
+    std = get_object_or_404(Student, reg_no=pk)
+    mrk = std.mark_set.all().order_by('sub')
+    return render(request, 'ncas/studentdetails.html', {'student': std, 'mark': mrk})
 
 
 @permission_required('auth.add_user')

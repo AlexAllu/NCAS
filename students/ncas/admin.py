@@ -5,7 +5,7 @@ from .models import Student, Course, Subject, Mark, Tutor, Notification
 # admin.site.register(Student)
 admin.site.register(Course)
 admin.site.register(Subject)
-#admin.site.register(Mark)
+# admin.site.register(Mark)
 admin.site.register(Notification)
 
 
@@ -16,6 +16,15 @@ class StudentInline(admin.TabularInline):
 
 
 @admin.register(Tutor)
-class BookAdmin(admin.ModelAdmin):
+class TutorAdmin(admin.ModelAdmin):
     inlines = [StudentInline]
 
+
+class MarkInline(admin.TabularInline):
+    model = Mark
+    fields = ['sub', 's_mark1', 's_mark2']
+
+
+@admin.register(Student)
+class StudentAdmin(admin.ModelAdmin):
+    inlines = [MarkInline]
