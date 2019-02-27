@@ -1,49 +1,199 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
      <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>NCAS</title>
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 </head>
+
 <body>
+
 <nav class="navbar navbar-inverse">
+
   <div class="container-fluid">
+
     <div class="navbar-header">
-      <a class="navbar-brand" href="{% url 'ncas:home' %}">NCAS</a>
+
+      <a class="navbar-brand" href="#">NCAS</a>
+
     </div>
-    {%if user.is_authenticated %}
+
+      {%if user.is_authenticated %}
+
     <ul class="nav navbar-nav">
-      {% if perms.ncas.change_mark %}
-        <li><a href="{% url 'ncas:studentlist' %}">Students</a></li>
+
+
+      <li><a href="{% url 'ncas:studentlist' %}">Students</a></li>
+
         <li><a href="{% url 'ncas:usercreate' %}">Create Student</a></li>
-        <li><a href="{% url 'ncas:assc' user.tutor.pk %}">Add assignments</a></li>
-      {% else %}
-        <li><a href="">Your marks</a></li>
-        <li><a href="{% url 'ncas:assl' user.student.tutor.pk %}">Assignments</a></li>
+
+    </ul>
 
       {%endif%}
-      <li><a href="{% url 'ncas:notifs' %}">Notifications</a></li>
-    </ul>
-    {%endif%}
+
     <ul class="nav navbar-nav navbar-right">
+
       {%if user.is_authenticated %}
-        {%if user.student %}
-         <li><a href="{% url 'ncas:studentdetail' pk=user.student.pk %}"><span class="glyphicon glyphicon-user"></span>{{user.username}}</a></li>
-      {% else %}
+
         <li><a href="#"><span class="glyphicon glyphicon-user"></span>{{user.username}}</a></li>
-      {%endif%}
-        <li><a href="{% url 'logout' %}?next={% url 'login' %}"> <span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
+        <li><a href="{% url 'logout' %}?next={{request.path}}"> <span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
         {% else %}
 
-            <li><a href="{% url 'login' %}?next={% url 'ncas:home' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+            <li><a href="{% url 'login' %}?next={{request.path}}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+            <!--<li><a href="{% url 'admin:index'%}"><span class="glyphicon glyphicon-user"></span>Admin LogIn</a></li>
         {%endif%}
+
     </ul>
+
   </div>
-</nav>
+
+</nav>-->
+
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Plato - Clean responsive bootstrap website template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Clean responsive bootstrap website template">
+  <meta name="author" content="">
+  <!-- styles -->
+  <link href="{% static 'css/ncas/css/bootstrap.css'%}"css/ncas/css/bootstrap.css'%}" rel="stylesheet">
+  <link href="{% static 'css/ncas/css/bootstrap-responsive.css' %}" rel="stylesheet">
+  <link href="{% static 'css/ncas/css/docs.css' %}" rel="stylesheet">
+  <link href="{% static 'css/ncas/css/prettyPhoto.css' %}" rel="stylesheet">
+  <link href="{% static 'css/ncas/js/google-code-prettify/prettify.css' %}" rel="stylesheet">
+  <link href="{% static 'css/ncas/css/flexslider.css' %}" rel="stylesheet">
+  <link href="{% static 'css/ncas/css/refineslide.css' %}" rel="stylesheet">
+  <link href="{% static 'css/ncas/css/font-awesome.css' %}" rel="stylesheet">
+  <link href="{% static 'css/ncas/css/animate.css' %}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700" rel="stylesheet">
+  
+  <link href="{% static 'css/ncas/css/style.css'%}" rel="stylesheet">
+  <link href="{% static 'css/ncas/color/default.css'%}" rel="stylesheet">
+  <!-- fav and touch icons -->
+  <link rel="shortcut icon" href="{% static 'css/ncas/ico/favicon.ico'%}">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'css/ncas/ico/apple-touch-icon-144-precomposed.png'%}">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'css/ncas/ico/apple-touch-icon-114-precomposed.png'%}">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'css/ncas/ico/apple-touch-icon-72-precomposed.png'%}">
+  <link rel="apple-touch-icon-precomposed" href="{% static 'css/ncas/ico/apple-touch-icon-57-precomposed.png'%}">
+  <!-- =======================================================
+    Theme Name: Plato
+    Theme URL: https://bootstrapmade.com/plato-responsive-bootstrap-website-template/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+</head>
+<body>
+  <header>
+    <!-- Navbar
+    ================================================== -->
+    <div class="cbp-af-header">
+      <div class=" cbp-af-inner">
+        <div class="container">
+          <div class="row">
+
+            <div class="span4">
+              <!-- logo -->
+              <div class="logo">
+                <h1><a href="{% url 'ncas:home' %}">NCAS</a></h1>
+               
+                <!-- <img src="assets/img/logo.png" alt="" /> -->
+              </div>
+              <!-- end logo -->
+            </div>
+
+            <div class="span8">
+              <!-- top menu -->
+              <div class="navbar">
+                <div class="navbar-inner">
+                  <nav>
+                 
+                   <ul class="nav topnav">
+                      <li class="dropdown active">
+                      {%if user.is_authenticated %}
+                        <a href="{% url 'ncas:studentlist' %}">Students</a></li>
+                        {% endif %}
+                      <li class="dropdown">
+                        <a href="#">Features</a>
+                        <ul class="dropdown-menu">
+                          <li><a href="scaffolding.html">Scaffolding</a></li>
+                          <li><a href="#">Base CSS</a></li>
+                          <li><a href="components.html">Components</a></li>
+                          <li><a href="icons.html">Icons</a></li>
+                          <li><a href="list.html">Styled lists</a></li>
+                          <li class="dropdown"><a href="#">3rd level</a>
+                            <ul class="dropdown-menu sub-menu">
+                              <li><a href="#">Example menu</a></li>
+                              <li><a href="#">Example menu</a></li>
+                              <li><a href="#">Example menu</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#">Pages</a>
+                        <ul class="dropdown-menu">
+                          <li><a href="about.html">About us</a></li>
+                          <li><a href="pricingtable.html">Pricing table</a></li>
+                          <li><a href="fullwidth.html">Fullwidth</a></li>
+                          <li><a href="404.html">404</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#">Portfolio</a>
+                        <ul class="dropdown-menu">
+                          <li><a href="portfolio-2cols.html">Portfolio 2 columns</a></li>
+                          <li><a href="portfolio-3cols.html">Portfolio 3 columns</a></li>
+                          <li><a href="portfolio-4cols.html">Portfolio 4 columns</a></li>
+                          <li><a href="portfolio-detail.html">Portfolio detail</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#">Blog</a>
+                        <ul class="dropdown-menu">
+                          <li><a href="blog_left_sidebar.html">Blog left sidebar</a></li>
+                          <li><a href="blog_right_sidebar.html">Blog right sidebar</a></li>
+                          <li><a href="post_left_sidebar.html">Post left sidebar</a></li>
+                          <li><a href="post_right_sidebar.html">Post right sidebar</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="contact.html">Contact</a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <!-- end menu -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 {% block content %}
+
 {% endblock %}
 </body>
 </html>
+
