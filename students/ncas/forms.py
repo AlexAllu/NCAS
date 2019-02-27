@@ -21,13 +21,13 @@ class StudentCreation(forms.ModelForm):
 
     class Meta:
         model = Student
-        fields = ('name', 'adm_no', 'reg_no', 'course')
+        fields = ('name', 'adm_no', 'reg_no', 'add_ress', 'phno', 'course')
 
 
 class MarkCreation(forms.ModelForm):
     class Meta:
         model = Mark
-        fields = ('s_mark1', 's_mark2')
+        fields = ('s_mark1', 's_mark2', 'assmnt_mark1', 'assmnt_mark2', 'attndnc_mark')
 
 
 class AssignmentsCreation(forms.ModelForm):

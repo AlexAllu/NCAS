@@ -1,6 +1,9 @@
 import datetime
 import uuid as uuid
 from time import timezone
+
+from django.core.exceptions import ValidationError
+from django.utils.datetime_safe import date
 from django.utils.timezone import now
 
 from django.contrib.auth.models import User
@@ -19,16 +22,26 @@ class Course(models.Model):
 
 
 class Tutor(models.Model):
+    def validate(x):
+        if len(str(x)) != 10:
+            raise ValidationError("Mobile number must be 10 digit number")
     detail = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField('Name', max_length=100)
+    ph_no = models.IntegerField('Contact No', validators=[validate])
 
     def __str__(self):
         return self.name
 
 
 class Student(models.Model):
+    def validate(x):
+        if len(str(x)) != 10:
+            raise ValidationError("Mobile number must be 10 digit number")
+
     details = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField('Name', max_length=100)
+    add_ress = models.CharField('Address', max_length=1000)
+    phno = models.IntegerField('Contact No', validators=[validate], null=True)
     adm_no = models.IntegerField('Admission No', validators=[MinValueValidator(1), MaxValueValidator(1000)])
     reg_no = models.IntegerField('Reg No', primary_key=True)
     course = models.ForeignKey(Course, verbose_name='Course', on_delete=models.PROTECT)
@@ -61,6 +74,12 @@ class Mark(models.Model):
                                   blank=True)
     s_mark2 = models.IntegerField('Second Internal mark', validators=[MaxValueValidator(50), MinValueValidator(0)],
                                   blank=True)
+    assmnt_mark1 = models.IntegerField('First Assignment mark', validators=[MaxValueValidator(50), MinValueValidator(0)],
+                                       blank=True)
+    assmnt_mark2 = models.IntegerField('Second Assignment mark', validators=[MaxValueValidator(50), MinValueValidator(0)],
+                                       blank=True)
+    attndnc_mark = models.IntegerField('Attendance mark', validators=[MaxValueValidator(50), MinValueValidator(0)],
+                                       blank=True)
 
     def __str__(self):
         return self.sub.name
@@ -76,7 +95,7 @@ class Assignment(models.Model):
     file = models.FileField(upload_to='assignments/{}/'.format(tutor.name), default='noimg.png')
 
     def __str__(self):
-        return self.sub
+        return self.topic
 
 
 class Notification(models.Model):

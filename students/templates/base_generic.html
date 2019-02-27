@@ -45,8 +45,8 @@
             <div class="span4">
               <!-- logo -->
               <div class="logo">
-                <h1><a href="{% url 'ncas:home' %}">NCAS</a></h1>
-
+                <h1><a href="{% url 'ncas:home' %}">NCAS</a></h1><br>
+                    Student's Portal
                 <!-- <img src="assets/img/logo.png" alt="" /> -->
               </div>
               <!-- end logo -->
@@ -68,14 +68,14 @@
                             <li><a href="{% url 'ncas:assc' user.tutor.pk %}">Add assignments</a></li>
                         {% else %}
                             <a href="{% url 'ncas:studentdetail' pk=user.student.pk %}">{{user.username}}</a></li>
-                            <li><a href="">Your marks</a></li>
+
                             <li><a href="{% url 'ncas:assl' user.student.tutor.pk %}">Assignments</a></li>
 
                         {% endif %}
                         <li><a href="{% url 'ncas:notifs' %}">Notifications</a></li>
                         <li><a href="{% url 'logout' %}?next={% url 'login' %}">Logout</a></li>
                         {% else %}
-                            <li><a href="{% url 'login' %}?next={% url 'ncas:home' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            <li><a href="{% url 'login' %}?next={% url 'ncas:home' %}"></span> Login</a></li>
                         {% endif %}
                     <!--<li class="dropdown">
                         <a href="#">FEATURES</a>
@@ -94,9 +94,7 @@
                           </li>
                         </ul>
                       </li>-->
-                      <li>
-                        <a href="contact.html">Contact</a>
-                      </li>
+
                     </ul>
                   </nav>
                 </div>

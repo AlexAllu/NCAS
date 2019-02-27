@@ -2,7 +2,12 @@
 {% extends 'base_generic.html' %}
 {% block content %}
 {% load static %}
-<div class="collapse navbar-collapse" id="navbarResponsive">
+<section id="intro">
+
+    <div class="container">
+      <div class="row">
+        <div class="span6">
+<div class="container">
 <table class="table">
 <tr>
     <td>{{ notifsd.topic }}</td>
@@ -15,4 +20,8 @@
     </tr>
 </table>
 </div>
+                    </div>
+    </div>
+    </div>
+  </section>
 {% endblock %}
