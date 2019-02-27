@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 {% extends 'base_generic.html' %}
 {% block content %}
+<section id="intro">
+
+    <div class="container">
+      <div class="row">
+        <div class="span6">
+
 <h2>Your Students</h2>
 <ul>
     {% for std in list %}
@@ -9,4 +15,9 @@
     </li>
     {% endfor %}
 </ul>
+                     </div>
+      </div>
+    </div>
+
+  </section>
 {% endblock %}
